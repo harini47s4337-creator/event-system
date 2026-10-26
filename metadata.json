@@ -1,0 +1,6 @@
+{
+  "name": "EventSphere – Multi-Tenant Event & Ticket Reservation System",
+  "description": "Multi-tenant event ticketing platform with concurrency-safe 10-minute hold reservation engine, mock payment gateway, organizer analytics, and role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

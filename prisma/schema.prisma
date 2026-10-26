@@ -1,0 +1,315 @@
+// EventSphere - Multi-Tenant Event & Ticket Reservation System
+// Prisma Schema Definition
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  ORGANIZER
+  ATTENDEE
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum OrgStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum OrgMemberRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum EventStatus {
+  DRAFT
+  PENDING_APPROVAL
+  PUBLISHED
+  SOLD_OUT
+  COMPLETED
+  CANCELLED
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  EXPIRED
+  CANCELLED
+  PAYMENT_FAILED
+}
+
+enum OrderStatus {
+  CONFIRMED
+  CANCELLED
+  REFUNDED
+}
+
+enum TransactionStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  TIMEOUT
+}
+
+model User {
+  id           String               @id @default(uuid())
+  name         String
+  email        String               @unique
+  passwordHash String
+  role         Role                 @default(ATTENDEE)
+  status       UserStatus           @default(ACTIVE)
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+
+  organizations       Organization[]        @relation("OrgOwner")
+  organizationMembers OrganizationMember[]
+  reservations        Reservation[]
+  orders              Order[]
+  auditLogs           AuditLog[]
+  notifications       Notification[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Organization {
+  id          String               @id @default(uuid())
+  name        String
+  slug        String               @unique
+  ownerId     String
+  status      OrgStatus            @default(ACTIVE)
+  description String?
+  logoUrl     String?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  owner       User                 @relation("OrgOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  members     OrganizationMember[]
+  events      Event[]
+  announcements EventAnnouncement[]
+
+  @@index([ownerId])
+  @@index([slug])
+  @@index([status])
+}
+
+model OrganizationMember {
+  id             String        @id @default(uuid())
+  organizationId String
+  userId         String
+  role           OrgMemberRole @default(MEMBER)
+  createdAt      DateTime      @default(now())
+
+  organization   Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@index([organizationId])
+  @@index([userId])
+}
+
+model Event {
+  id             String       @id @default(uuid())
+  organizationId String
+  title          String
+  description    String
+  bannerUrl      String
+  category       String
+  venue          String
+  address        String
+  eventDate      DateTime
+  startTime      String
+  endTime        String
+  salesStartAt   DateTime
+  salesCutoffAt  DateTime
+  capacity       Int
+  status         EventStatus  @default(DRAFT)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  ticketTiers    TicketTier[]
+  reservations   Reservation[]
+  orders         Order[]
+  announcements  EventAnnouncement[]
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([category])
+  @@index([eventDate])
+}
+
+model TicketTier {
+  id                String            @id @default(uuid())
+  eventId           String
+  name              String
+  price             Decimal           @db.Decimal(10, 2)
+  totalQuantity     Int
+  availableQuantity Int
+  reservedQuantity  Int               @default(0)
+  soldQuantity      Int               @default(0)
+  salesStartAt      DateTime?
+  salesEndAt        DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  event             Event             @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  reservationItems  ReservationItem[]
+  orderItems        OrderItem[]
+
+  @@index([eventId])
+}
+
+model Reservation {
+  id             String            @id @default(uuid())
+  userId         String
+  eventId        String
+  status         ReservationStatus @default(PENDING)
+  expiresAt      DateTime
+  idempotencyKey String?           @unique
+  totalAmount    Decimal           @db.Decimal(10, 2)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event          Event             @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  items          ReservationItem[]
+  order          Order?
+  transactions   Transaction[]
+
+  @@index([userId])
+  @@index([eventId])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+model ReservationItem {
+  id            String      @id @default(uuid())
+  reservationId String
+  ticketTierId  String
+  quantity      Int
+  unitPrice     Decimal     @db.Decimal(10, 2)
+
+  reservation   Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+  ticketTier    TicketTier  @relation(fields: [ticketTierId], references: [id], onDelete: Cascade)
+
+  @@index([reservationId])
+  @@index([ticketTierId])
+}
+
+model Order {
+  id               String       @id @default(uuid())
+  userId           String
+  eventId          String
+  reservationId    String       @unique
+  bookingReference String       @unique
+  attendeeName     String
+  attendeeEmail    String
+  attendeePhone    String?
+  totalAmount      Decimal      @db.Decimal(10, 2)
+  status           OrderStatus  @default(CONFIRMED)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  user             User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event            Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  reservation      Reservation  @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+  items            OrderItem[]
+  transactions     Transaction[]
+
+  @@index([userId])
+  @@index([eventId])
+  @@index([bookingReference])
+}
+
+model OrderItem {
+  id           String     @id @default(uuid())
+  orderId      String
+  ticketTierId String
+  quantity     Int
+  unitPrice    Decimal    @db.Decimal(10, 2)
+
+  order        Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  ticketTier   TicketTier @relation(fields: [ticketTierId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Transaction {
+  id               String            @id @default(uuid())
+  orderId          String?
+  reservationId    String
+  paymentReference String            @unique
+  amount           Decimal           @db.Decimal(10, 2)
+  paymentMethod    String            @default("MOCK_PAYMENT")
+  status           TransactionStatus @default(PENDING)
+  idempotencyKey   String?           @unique
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  order            Order?            @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  reservation      Reservation       @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([reservationId])
+  @@index([paymentReference])
+}
+
+model EventAnnouncement {
+  id             String       @id @default(uuid())
+  eventId        String
+  organizationId String
+  title          String
+  content        String
+  isPinned       Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+
+  event          Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([organizationId])
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  userId       String?
+  action       String
+  resourceType String
+  resourceId   String
+  details      String?
+  ipAddress    String?
+  createdAt    DateTime @default(now())
+
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([resourceType])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([read])
+}

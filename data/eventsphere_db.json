@@ -1,0 +1,778 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-1",
+      "name": "Elena Rostova (Platform Admin)",
+      "email": "admin@eventsphere.com",
+      "passwordHash": "$2b$10$dI7Fz6RG8t4TGrdNDyEB2ukejqYjInP17ykH8XoYGV1xZ6NXMCImu",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "usr-org-1",
+      "name": "Sarah Chen",
+      "email": "sarah@pulseevents.com",
+      "passwordHash": "$2b$10$mQidu72jU7VZYhohqwkQ/.rEicIFeGG60v1DH9JVVuX3u.hUTO2p.",
+      "role": "ORGANIZER",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-01T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "usr-org-2",
+      "name": "David Miller",
+      "email": "david@horizonlive.com",
+      "passwordHash": "$2b$10$mQidu72jU7VZYhohqwkQ/.rEicIFeGG60v1DH9JVVuX3u.hUTO2p.",
+      "role": "ORGANIZER",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-06T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "usr-att-1",
+      "name": "Alex Johnson",
+      "email": "attendee@example.com",
+      "passwordHash": "$2b$10$9R4hNvAixoWTN6sRDob25OkElwG6qj2niWlLs1ZV2yEknf1V76cBG",
+      "role": "ATTENDEE",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-11T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "usr-att-2",
+      "name": "Maya Patel",
+      "email": "maya@example.com",
+      "passwordHash": "$2b$10$9R4hNvAixoWTN6sRDob25OkElwG6qj2niWlLs1ZV2yEknf1V76cBG",
+      "role": "ATTENDEE",
+      "status": "ACTIVE",
+      "createdAt": "2026-10-16T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "org-1",
+      "name": "Pulse Media & Events",
+      "slug": "pulse-media-events",
+      "ownerId": "usr-org-1",
+      "status": "ACTIVE",
+      "description": "Premier organizer of global technology conferences, music festivals, and innovation summits.",
+      "logoUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-10-01T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "org-2",
+      "name": "Horizon Live Experiences",
+      "slug": "horizon-live",
+      "ownerId": "usr-org-2",
+      "status": "ACTIVE",
+      "description": "Curating world-class culinary expos, fitness marathons, and executive leadership retreats.",
+      "logoUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=200&auto=format&fit=crop&q=80",
+      "createdAt": "2026-10-06T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    }
+  ],
+  "organizationMembers": [
+    {
+      "id": "mem-1",
+      "organizationId": "org-1",
+      "userId": "usr-org-1",
+      "role": "OWNER",
+      "createdAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "mem-2",
+      "organizationId": "org-2",
+      "userId": "usr-org-2",
+      "role": "OWNER",
+      "createdAt": "2026-10-26T17:33:58.377Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-1",
+      "organizationId": "org-1",
+      "title": "Global AI & Cloud Summit 2026",
+      "description": "The world’s definitive gathering of machine learning engineers, cloud architects, and tech innovators. Features 40+ keynote sessions, live coding sandboxes, and networking with global technology leaders.",
+      "bannerUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format&fit=crop&q=80",
+      "category": "Tech & Innovation",
+      "venue": "Moscone Center, South Hall",
+      "address": "747 Howard St, San Francisco, CA 94103",
+      "eventDate": "2026-11-13T17:33:58.377Z",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "salesStartAt": "2026-09-26T17:33:58.377Z",
+      "salesCutoffAt": "2026-11-12T17:33:58.377Z",
+      "capacity": 400,
+      "status": "PUBLISHED",
+      "createdAt": "2026-10-02T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "evt-2",
+      "organizationId": "org-1",
+      "title": "Neon Horizon Music & Arts Festival",
+      "description": "A 3-day immersive outdoor festival bringing together world-class electronic producers, interactive kinetic light installations, and gourmet artisan dining.",
+      "bannerUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&auto=format&fit=crop&q=80",
+      "category": "Music & Arts",
+      "venue": "Circuit Amphitheater",
+      "address": "9201 Circuit of The Americas Blvd, Austin, TX 78617",
+      "eventDate": "2026-11-20T17:33:58.377Z",
+      "startTime": "15:00",
+      "endTime": "23:30",
+      "salesStartAt": "2026-10-06T17:33:58.377Z",
+      "salesCutoffAt": "2026-11-19T17:33:58.377Z",
+      "capacity": 540,
+      "status": "PUBLISHED",
+      "createdAt": "2026-10-07T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "evt-3",
+      "organizationId": "org-2",
+      "title": "International Culinary & Wine Masters Expo",
+      "description": "An exclusive culinary symposium featuring Michelin-starred guest chefs, sommelier-guided reserve wine tastings, and live cooking demonstrations.",
+      "bannerUrl": "https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&auto=format&fit=crop&q=80",
+      "category": "Food & Wine",
+      "venue": "Navy Pier Grand Ballroom",
+      "address": "600 E Grand Ave, Chicago, IL 60611",
+      "eventDate": "2026-11-07T17:33:58.377Z",
+      "startTime": "11:00",
+      "endTime": "20:00",
+      "salesStartAt": "2026-10-11T17:33:58.377Z",
+      "salesCutoffAt": "2026-11-06T17:33:58.377Z",
+      "capacity": 380,
+      "status": "PUBLISHED",
+      "createdAt": "2026-10-12T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "evt-4",
+      "organizationId": "org-2",
+      "title": "NextGen Venture & Founder Summit",
+      "description": "High-impact gathering of seed-stage to Series B founders, top venture capitalists, and angel syndicates. Pitch stages, 1-on-1 investor matchmaking, and deal-flow rooms.",
+      "bannerUrl": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&auto=format&fit=crop&q=80",
+      "category": "Business & Leadership",
+      "venue": "The Times Center",
+      "address": "242 W 41st St, New York, NY 10036",
+      "eventDate": "2026-11-25T17:33:58.377Z",
+      "startTime": "08:30",
+      "endTime": "17:30",
+      "salesStartAt": "2026-10-16T17:33:58.377Z",
+      "salesCutoffAt": "2026-11-24T17:33:58.377Z",
+      "capacity": 210,
+      "status": "PUBLISHED",
+      "createdAt": "2026-10-17T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "evt-5",
+      "organizationId": "org-1",
+      "title": "Autonomous Robotics & Systems Workshop",
+      "description": "Hands-on intensive bootcamp exploring ROS2, sensor fusion, and spatial perception for autonomous hardware engineering teams.",
+      "bannerUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&fit=crop&q=80",
+      "category": "Tech & Innovation",
+      "venue": "Seattle Innovation Hub",
+      "address": "400 Dexter Ave N, Seattle, WA 98109",
+      "eventDate": "2026-12-10T17:33:58.377Z",
+      "startTime": "10:00",
+      "endTime": "16:00",
+      "salesStartAt": "2026-10-21T17:33:58.377Z",
+      "salesCutoffAt": "2026-12-09T17:33:58.377Z",
+      "capacity": 100,
+      "status": "DRAFT",
+      "createdAt": "2026-10-22T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "evt-concurrency-test",
+      "organizationId": "org-1",
+      "title": "High-Concurrency VIP Showcase (10 Tickets Total)",
+      "description": "Special benchmark event configured specifically for verifying real-time concurrent reservation safety and atomic inventory lock mechanics.",
+      "bannerUrl": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&auto=format&fit=crop&q=80",
+      "category": "Tech & Innovation",
+      "venue": "San Francisco Performance Lab",
+      "address": "100 Main St, San Francisco, CA",
+      "eventDate": "2026-11-05T17:33:58.377Z",
+      "startTime": "14:00",
+      "endTime": "16:00",
+      "salesStartAt": "2026-10-24T17:33:58.377Z",
+      "salesCutoffAt": "2026-11-04T17:33:58.377Z",
+      "capacity": 10,
+      "status": "PUBLISHED",
+      "createdAt": "2026-10-24T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    }
+  ],
+  "ticketTiers": [
+    {
+      "id": "tier-evt1-vip",
+      "eventId": "evt-1",
+      "name": "VIP All-Access Pass",
+      "price": 499,
+      "totalQuantity": 50,
+      "availableQuantity": 35,
+      "reservedQuantity": 0,
+      "soldQuantity": 15,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt1-standard",
+      "eventId": "evt-1",
+      "name": "Standard Conference Pass",
+      "price": 199,
+      "totalQuantity": 250,
+      "availableQuantity": 190,
+      "reservedQuantity": 0,
+      "soldQuantity": 60,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt1-student",
+      "eventId": "evt-1",
+      "name": "Academic & Student Pass",
+      "price": 79,
+      "totalQuantity": 100,
+      "availableQuantity": 80,
+      "reservedQuantity": 0,
+      "soldQuantity": 20,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt2-vip",
+      "eventId": "evt-2",
+      "name": "VIP Lounge & Backstage Entry",
+      "price": 350,
+      "totalQuantity": 40,
+      "availableQuantity": 28,
+      "reservedQuantity": 0,
+      "soldQuantity": 12,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt2-ga",
+      "eventId": "evt-2",
+      "name": "General Admission - 3 Day",
+      "price": 120,
+      "totalQuantity": 500,
+      "availableQuantity": 400,
+      "reservedQuantity": 0,
+      "soldQuantity": 100,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt3-tasting",
+      "eventId": "evt-3",
+      "name": "Chef Tasting & Grand Reserve",
+      "price": 220,
+      "totalQuantity": 80,
+      "availableQuantity": 60,
+      "reservedQuantity": 0,
+      "soldQuantity": 20,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt3-general",
+      "eventId": "evt-3",
+      "name": "General Tasting Pavilion",
+      "price": 85,
+      "totalQuantity": 300,
+      "availableQuantity": 220,
+      "reservedQuantity": 0,
+      "soldQuantity": 80,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt4-investor",
+      "eventId": "evt-4",
+      "name": "Investor & Syndicate Pass",
+      "price": 599,
+      "totalQuantity": 60,
+      "availableQuantity": 44,
+      "reservedQuantity": 0,
+      "soldQuantity": 16,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt4-founder",
+      "eventId": "evt-4",
+      "name": "Founder General Pass",
+      "price": 249,
+      "totalQuantity": 150,
+      "availableQuantity": 110,
+      "reservedQuantity": 0,
+      "soldQuantity": 40,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-evt5-workshop",
+      "eventId": "evt-5",
+      "name": "Full Workshop Pass",
+      "price": 320,
+      "totalQuantity": 100,
+      "availableQuantity": 100,
+      "reservedQuantity": 0,
+      "soldQuantity": 0,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.377Z"
+    },
+    {
+      "id": "tier-concurrency-benchmark",
+      "eventId": "evt-concurrency-test",
+      "name": "General Admission (Strict 10 Inventory)",
+      "price": 50,
+      "totalQuantity": 10,
+      "availableQuantity": 0,
+      "reservedQuantity": 10,
+      "soldQuantity": 0,
+      "createdAt": "2026-10-26T17:33:58.377Z",
+      "updatedAt": "2026-10-26T17:33:58.386Z"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "res-seed-1",
+      "userId": "usr-att-1",
+      "eventId": "evt-1",
+      "status": "CONFIRMED",
+      "expiresAt": "2026-10-21T17:33:58.377Z",
+      "idempotencyKey": "idemp-seed-1",
+      "totalAmount": 499,
+      "createdAt": "2026-10-21T17:33:58.377Z",
+      "updatedAt": "2026-10-21T17:33:58.377Z"
+    },
+    {
+      "id": "res-seed-2",
+      "userId": "usr-att-2",
+      "eventId": "evt-1",
+      "status": "CONFIRMED",
+      "expiresAt": "2026-10-23T17:33:58.377Z",
+      "idempotencyKey": "idemp-seed-2",
+      "totalAmount": 398,
+      "createdAt": "2026-10-23T17:33:58.377Z",
+      "updatedAt": "2026-10-23T17:33:58.377Z"
+    },
+    {
+      "id": "res-a9igqqg9",
+      "userId": "usr-test-attendee-1",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.383Z",
+      "idempotencyKey": "idemp-test-concurrent-1",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.383Z",
+      "updatedAt": "2026-10-26T17:33:58.383Z"
+    },
+    {
+      "id": "res-95viwhon",
+      "userId": "usr-test-attendee-2",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.383Z",
+      "idempotencyKey": "idemp-test-concurrent-2",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.383Z",
+      "updatedAt": "2026-10-26T17:33:58.383Z"
+    },
+    {
+      "id": "res-nc728sgi",
+      "userId": "usr-test-attendee-3",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.384Z",
+      "idempotencyKey": "idemp-test-concurrent-3",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.384Z",
+      "updatedAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "res-fdnkjfe8",
+      "userId": "usr-test-attendee-4",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.384Z",
+      "idempotencyKey": "idemp-test-concurrent-4",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.384Z",
+      "updatedAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "res-k3vhxbq0",
+      "userId": "usr-test-attendee-5",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.384Z",
+      "idempotencyKey": "idemp-test-concurrent-5",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.384Z",
+      "updatedAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "res-s4mzwg3w",
+      "userId": "usr-test-attendee-6",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.385Z",
+      "idempotencyKey": "idemp-test-concurrent-6",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.385Z",
+      "updatedAt": "2026-10-26T17:33:58.385Z"
+    },
+    {
+      "id": "res-ilp8on4h",
+      "userId": "usr-test-attendee-7",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.385Z",
+      "idempotencyKey": "idemp-test-concurrent-7",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.385Z",
+      "updatedAt": "2026-10-26T17:33:58.385Z"
+    },
+    {
+      "id": "res-teqgw4nj",
+      "userId": "usr-test-attendee-8",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.386Z",
+      "idempotencyKey": "idemp-test-concurrent-8",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.386Z",
+      "updatedAt": "2026-10-26T17:33:58.386Z"
+    },
+    {
+      "id": "res-10i6etjw",
+      "userId": "usr-test-attendee-9",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.386Z",
+      "idempotencyKey": "idemp-test-concurrent-9",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.386Z",
+      "updatedAt": "2026-10-26T17:33:58.386Z"
+    },
+    {
+      "id": "res-pau6m2ea",
+      "userId": "usr-test-attendee-10",
+      "eventId": "evt-concurrency-test",
+      "status": "PENDING",
+      "expiresAt": "2026-10-26T17:43:58.386Z",
+      "idempotencyKey": "idemp-test-concurrent-10",
+      "totalAmount": 50,
+      "createdAt": "2026-10-26T17:33:58.386Z",
+      "updatedAt": "2026-10-26T17:33:58.386Z"
+    }
+  ],
+  "reservationItems": [
+    {
+      "id": "res-item-1",
+      "reservationId": "res-seed-1",
+      "ticketTierId": "tier-evt1-vip",
+      "quantity": 1,
+      "unitPrice": 499
+    },
+    {
+      "id": "res-item-2",
+      "reservationId": "res-seed-2",
+      "ticketTierId": "tier-evt1-standard",
+      "quantity": 2,
+      "unitPrice": 199
+    },
+    {
+      "id": "ritem-0t8s573t",
+      "reservationId": "res-a9igqqg9",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-hnx6q76r",
+      "reservationId": "res-95viwhon",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-kh84wom9",
+      "reservationId": "res-nc728sgi",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-bv6d0j83",
+      "reservationId": "res-fdnkjfe8",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-rr006527",
+      "reservationId": "res-k3vhxbq0",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-q30d6gc3",
+      "reservationId": "res-s4mzwg3w",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-x2k5z7rp",
+      "reservationId": "res-ilp8on4h",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-d3b7rzrr",
+      "reservationId": "res-teqgw4nj",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-5ygz53q9",
+      "reservationId": "res-10i6etjw",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    },
+    {
+      "id": "ritem-jhek7a3y",
+      "reservationId": "res-pau6m2ea",
+      "ticketTierId": "tier-concurrency-benchmark",
+      "quantity": 1,
+      "unitPrice": 50
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-seed-1",
+      "userId": "usr-att-1",
+      "eventId": "evt-1",
+      "reservationId": "res-seed-1",
+      "bookingReference": "ESP-2026-88192",
+      "attendeeName": "Alex Johnson",
+      "attendeeEmail": "attendee@example.com",
+      "attendeePhone": "+1 (555) 234-5678",
+      "totalAmount": 499,
+      "status": "CONFIRMED",
+      "createdAt": "2026-10-21T17:33:58.377Z",
+      "updatedAt": "2026-10-21T17:33:58.377Z"
+    },
+    {
+      "id": "ord-seed-2",
+      "userId": "usr-att-2",
+      "eventId": "evt-1",
+      "reservationId": "res-seed-2",
+      "bookingReference": "ESP-2026-44910",
+      "attendeeName": "Maya Patel",
+      "attendeeEmail": "maya@example.com",
+      "attendeePhone": "+1 (555) 987-6543",
+      "totalAmount": 398,
+      "status": "CONFIRMED",
+      "createdAt": "2026-10-23T17:33:58.377Z",
+      "updatedAt": "2026-10-23T17:33:58.377Z"
+    }
+  ],
+  "orderItems": [
+    {
+      "id": "ord-item-1",
+      "orderId": "ord-seed-1",
+      "ticketTierId": "tier-evt1-vip",
+      "quantity": 1,
+      "unitPrice": 499
+    },
+    {
+      "id": "ord-item-2",
+      "orderId": "ord-seed-2",
+      "ticketTierId": "tier-evt1-standard",
+      "quantity": 2,
+      "unitPrice": 199
+    }
+  ],
+  "transactions": [
+    {
+      "id": "txn-seed-1",
+      "orderId": "ord-seed-1",
+      "reservationId": "res-seed-1",
+      "paymentReference": "PAY-MOCK-991283",
+      "amount": 499,
+      "paymentMethod": "MOCK_CREDIT_CARD",
+      "status": "SUCCESS",
+      "idempotencyKey": "idemp-pay-1",
+      "createdAt": "2026-10-21T17:33:58.377Z",
+      "updatedAt": "2026-10-21T17:33:58.377Z"
+    },
+    {
+      "id": "txn-seed-2",
+      "orderId": "ord-seed-2",
+      "reservationId": "res-seed-2",
+      "paymentReference": "PAY-MOCK-772910",
+      "amount": 398,
+      "paymentMethod": "MOCK_CREDIT_CARD",
+      "status": "SUCCESS",
+      "idempotencyKey": "idemp-pay-2",
+      "createdAt": "2026-10-23T17:33:58.377Z",
+      "updatedAt": "2026-10-23T17:33:58.377Z"
+    }
+  ],
+  "eventAnnouncements": [
+    {
+      "id": "anc-1",
+      "eventId": "evt-1",
+      "organizationId": "org-1",
+      "title": "Keynote Speaker Announcement: Dr. Lin Tao on Foundation Models",
+      "content": "We are delighted to confirm Dr. Lin Tao, leading AI safety and reasoning researcher, will be opening the morning session on Day 1.",
+      "isPinned": true,
+      "createdAt": "2026-10-14T17:33:58.377Z"
+    },
+    {
+      "id": "anc-2",
+      "eventId": "evt-1",
+      "organizationId": "org-1",
+      "title": "Parking and Shuttle Information",
+      "content": "Complimentary electric shuttle buses run every 10 minutes between downtown hotels and the Moscone South main lobby.",
+      "isPinned": false,
+      "createdAt": "2026-10-22T17:33:58.377Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud-1",
+      "userId": "usr-admin-1",
+      "action": "SYSTEM_INITIALIZATION",
+      "resourceType": "PLATFORM",
+      "resourceId": "eventsphere-root",
+      "details": "Platform initialized with multi-tenant isolation and 10-minute hold concurrency controls.",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-09-26T17:33:58.377Z"
+    },
+    {
+      "id": "aud-2",
+      "userId": "usr-org-1",
+      "action": "PUBLISH_EVENT",
+      "resourceType": "EVENT",
+      "resourceId": "evt-1",
+      "details": "Event Global AI & Cloud Summit 2026 published with 3 ticket tiers.",
+      "ipAddress": "192.168.1.101",
+      "createdAt": "2026-10-02T17:33:58.377Z"
+    },
+    {
+      "id": "aud-tzxkoqoy",
+      "userId": "usr-test-attendee-1",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-a9igqqg9",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.383Z",
+      "createdAt": "2026-10-26T17:33:58.383Z"
+    },
+    {
+      "id": "aud-deectb30",
+      "userId": "usr-test-attendee-2",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-95viwhon",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.383Z",
+      "createdAt": "2026-10-26T17:33:58.383Z"
+    },
+    {
+      "id": "aud-s0aougu9",
+      "userId": "usr-test-attendee-3",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-nc728sgi",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.384Z",
+      "createdAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "aud-t60l8bn9",
+      "userId": "usr-test-attendee-4",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-fdnkjfe8",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.384Z",
+      "createdAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "aud-fu9xmujs",
+      "userId": "usr-test-attendee-5",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-k3vhxbq0",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.384Z",
+      "createdAt": "2026-10-26T17:33:58.384Z"
+    },
+    {
+      "id": "aud-x7ynamfg",
+      "userId": "usr-test-attendee-6",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-s4mzwg3w",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.385Z",
+      "createdAt": "2026-10-26T17:33:58.385Z"
+    },
+    {
+      "id": "aud-ozhrsf62",
+      "userId": "usr-test-attendee-7",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-ilp8on4h",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.385Z",
+      "createdAt": "2026-10-26T17:33:58.385Z"
+    },
+    {
+      "id": "aud-3xeq0q2t",
+      "userId": "usr-test-attendee-8",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-teqgw4nj",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.386Z",
+      "createdAt": "2026-10-26T17:33:58.386Z"
+    },
+    {
+      "id": "aud-jk5ht5pz",
+      "userId": "usr-test-attendee-9",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-10i6etjw",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.386Z",
+      "createdAt": "2026-10-26T17:33:58.386Z"
+    },
+    {
+      "id": "aud-y7ezr5uq",
+      "userId": "usr-test-attendee-10",
+      "action": "TICKET_HOLD_CREATED",
+      "resourceType": "RESERVATION",
+      "resourceId": "res-pau6m2ea",
+      "details": "Held 1 tickets for 10 minutes. Expires: 2026-10-26T17:43:58.386Z",
+      "createdAt": "2026-10-26T17:33:58.386Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "userId": "usr-att-1",
+      "title": "Booking Confirmed!",
+      "message": "Your booking for Global AI & Cloud Summit 2026 (Ref: ESP-2026-88192) has been confirmed.",
+      "read": false,
+      "createdAt": "2026-10-21T17:33:58.377Z"
+    }
+  ]
+}
